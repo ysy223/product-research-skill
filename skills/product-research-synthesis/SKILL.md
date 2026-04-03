@@ -21,7 +21,21 @@ Fetch the Notion page content using `mcp__notion__notion-fetch` (or `mcp__claude
 
 Read and internalize all service sections under `## 개별 툴 분석`.
 
-### Step 2: Build Common Feature Pattern Table
+### Step 2: Fill Reference List Table
+
+For each analyzed service, fill one row in the `## 레퍼런스 리스트` table:
+
+| 컬럼 | 내용 |
+|------|------|
+| **SaaS** | 서비스 이름 |
+| **정성 데이터** | 인터뷰, 오픈엔드 응답, 사용자 피드백 등 정성 수집 방식 지원 여부 및 특징 |
+| **정량 데이터** | NPS, CSAT, 평점, 설문 점수 등 정량 수집 방식 지원 여부 및 특징 |
+| **결과 리포트 강점** | 분석 결과를 어떻게 리포팅하는지 — AI 요약, 대시보드, 슬라이드 등 |
+| **참고할 포인트** | 벤치마크 관점에서 배울 수 있는 UX/기능 포인트 1–2개 |
+| **적합도** | 리서치 주제 관점에서 적합도 평가: 높음 / 중간 / 낮음 |
+| **주요 고객사** | 공개된 고객사 또는 타겟 고객 유형 |
+
+### Step 3: Build Common Feature Pattern Table
 
 Identify recurring features across services. For each pattern:
 - Count how many services have this feature (frequency: n/total)
@@ -82,9 +96,10 @@ Write 4–6 bullet points covering:
 ### Step 6: Update Notion Page
 
 Use `mcp__notion__notion-update-page` (or `mcp__claude_ai_Notion__notion-update-page`) with `update_content` to:
-1. Replace `## 공통 기능 패턴` section with the completed table
-2. Replace `## 공백(Gap) 패턴 — 아직 없는 기능` section with the gap table
-3. Replace `## 시사점 & 포지셔닝` section with positioning map + strategic implications
+1. Replace `## 레퍼런스 리스트` section with the completed reference table
+2. Replace `## 공통 기능 패턴` section with the completed pattern table
+3. Replace `## 공백(Gap) 패턴 — 아직 없는 기능` section with the gap table
+4. Replace `## 시사점 & 포지셔닝` section with positioning map + strategic implications
 
 ### Step 7: Report
 

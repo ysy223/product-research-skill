@@ -36,8 +36,15 @@ Once topic and parent page are clear:
 Create a new Notion page **under the provided parent page** using `mcp__notion__notion-create-pages` (or `mcp__claude_ai_Notion__notion-create-pages`), with `parent_id` set to the extracted page ID:
 
 ```
-📅 리서치 날짜: {TODAY}  |  🔢 버전: 1.0
-리서치 주제: {TOPIC}
+## 용어 정리
+| 용어 | 정의 |
+|------|------|
+(리서치 중 등장하는 도메인 용어를 여기에 정리)
+
+## 레퍼런스 리스트
+| SaaS | 정성 데이터 | 정량 데이터 | 결과 리포트 강점 | 참고할 포인트 | 적합도 | 주요 고객사 |
+|------|------------|------------|----------------|--------------|--------|------------|
+(종합 단계에서 채워짐)
 
 ## 분석 대상 서비스
 - [ ] Service A
