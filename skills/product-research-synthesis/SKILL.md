@@ -19,7 +19,7 @@ Parse `$ARGUMENTS` as: `{notion_page_id}`
 
 Fetch the Notion page content using `mcp__notion__notion-fetch` (or `mcp__claude_ai_Notion__notion-fetch`) with the page ID.
 
-Read and internalize all service sections under `## 개별 툴 분석`.
+Read and internalize all service sections under `## 개별 분석`.
 
 ### Step 2: Fill Reference List Table
 

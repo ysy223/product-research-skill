@@ -54,9 +54,6 @@ Create a new Notion page **under the provided parent page** using `mcp__notion__
 - [ ] Service B
 ... (체크박스 per 서비스)
 
-## 개별 툴 분석
-(각 서비스 섹션이 여기 추가됨)
-
 ## 공통 기능 패턴
 | 기능 패턴 | 카테고리 | 빈도 | 설명 | 주요 레퍼런스 |
 |-----------|----------|------|------|---------------|
@@ -69,6 +66,9 @@ Create a new Notion page **under the provided parent page** using `mcp__notion__
 
 ## 시사점 & 포지셔닝
 (종합 단계에서 채워짐)
+
+## 개별 분석
+(각 서비스 섹션이 여기 추가됨)
 ```
 
 Save the page ID for subsequent steps.

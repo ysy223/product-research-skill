@@ -107,7 +107,7 @@ Parse `$ARGUMENTS` as: `{service_name} {notion_page_id}`
 
 ### Step 4: Notion에 작성
 
-`mcp__notion__notion-update-page` (또는 `mcp__claude_ai_Notion__notion-update-page`)의 `update_content` 명령으로 `## 개별 툴 분석` 하위에 서비스 섹션 추가.
+`mcp__notion__notion-update-page` (또는 `mcp__claude_ai_Notion__notion-update-page`)의 `update_content` 명령으로 `## 개별 분석` 하위에 서비스 섹션 추가.
 
 ### Step 5: 완료 리포트
 
