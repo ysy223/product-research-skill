@@ -25,9 +25,12 @@ If topic is missing, ask:
 If Notion parent page URL is missing, ask:
 > "리서치 페이지를 만들 노션 페이지 URL을 알려주세요."
 
+Always ask for research purpose (1–2 sentences):
+> "이 리서치의 목적을 간단히 알려주세요. (예: '우리 제품에 벤치마킹할 분석 기능 탐색', '도입 검토를 위한 툴 비교')"
+
 Extract the Notion page ID from the URL (the 32-char hex string in the path).
 
-Once topic and parent page are clear:
+Once topic, parent page, and purpose are clear:
 1. Use `WebSearch` to identify 6–10 relevant products/services for the topic.
 2. Present the list to the user and confirm (add/remove services) before proceeding.
 
@@ -42,9 +45,9 @@ Create a new Notion page **under the provided parent page** using `mcp__notion__
 (리서치 중 등장하는 도메인 용어를 여기에 정리)
 
 ## 레퍼런스 리스트
-| SaaS | 정성 데이터 | 정량 데이터 | 결과 리포트 강점 | 참고할 포인트 | 적합도 | 주요 고객사 |
-|------|------------|------------|----------------|--------------|--------|------------|
-(종합 단계에서 채워짐)
+| SaaS | {목적 기반 컬럼 1} | {목적 기반 컬럼 2} | {목적 기반 컬럼 3} | 적합도 | 주요 고객사 |
+|------|-------------------|-------------------|-------------------|--------|------------|
+(종합 단계에서 채워짐 — 컬럼은 리서치 목적에 맞게 synthesis 단계에서 확정)
 
 ## 분석 대상 서비스
 - [ ] Service A

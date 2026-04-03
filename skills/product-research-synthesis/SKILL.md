@@ -23,17 +23,26 @@ Read and internalize all service sections under `## 개별 툴 분석`.
 
 ### Step 2: Fill Reference List Table
 
-For each analyzed service, fill one row in the `## 레퍼런스 리스트` table:
+First, determine 3 custom columns based on the research purpose stated at the start:
+- Think about what dimensions matter most for this specific purpose
+- Each column should answer a key question the researcher needs to compare across services
+- Examples by purpose:
+  - "분석 기능 벤치마킹" → 정성 데이터 수집 방식 / AI 분석 깊이 / 결과 리포트 형태
+  - "도입 툴 비교" → 온보딩 난이도 / 가격 대비 가치 / 팀 협업 지원
+  - "UX 리서치 툴 탐색" → 인터뷰 진행 방식 / 자동화 수준 / 리크루팅 기능
+
+Then fill one row per service with these fixed + dynamic columns:
 
 | 컬럼 | 내용 |
 |------|------|
 | **SaaS** | 서비스 이름 |
-| **정성 데이터** | 인터뷰, 오픈엔드 응답, 사용자 피드백 등 정성 수집 방식 지원 여부 및 특징 |
-| **정량 데이터** | NPS, CSAT, 평점, 설문 점수 등 정량 수집 방식 지원 여부 및 특징 |
-| **결과 리포트 강점** | 분석 결과를 어떻게 리포팅하는지 — AI 요약, 대시보드, 슬라이드 등 |
-| **참고할 포인트** | 벤치마크 관점에서 배울 수 있는 UX/기능 포인트 1–2개 |
-| **적합도** | 리서치 주제 관점에서 적합도 평가: 높음 / 중간 / 낮음 |
+| **{목적 기반 컬럼 1}** | 해당 차원에서의 특징 (1–2문장) |
+| **{목적 기반 컬럼 2}** | 해당 차원에서의 특징 (1–2문장) |
+| **{목적 기반 컬럼 3}** | 해당 차원에서의 특징 (1–2문장) |
+| **적합도** | 리서치 목적 기준 적합도: 높음 / 중간 / 낮음 |
 | **주요 고객사** | 공개된 고객사 또는 타겟 고객 유형 |
+
+Replace the placeholder column headers in the Notion table with the actual column names chosen.
 
 ### Step 3: Build Common Feature Pattern Table
 
