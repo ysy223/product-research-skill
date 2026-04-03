@@ -1,0 +1,17 @@
+{
+  "name": "product-research-skill",
+  "version": "1.0.0",
+  "description": "Product benchmark research skill for Claude Code — creates structured Notion pages with per-service analysis, common patterns, and strategic implications.",
+  "author": {
+    "name": "sonya",
+    "url": "https://github.com/sonya"
+  },
+  "keywords": [
+    "product-research",
+    "benchmarking",
+    "competitive-analysis",
+    "notion",
+    "product-management"
+  ],
+  "license": "MIT"
+}
