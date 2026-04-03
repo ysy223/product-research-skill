@@ -44,15 +44,13 @@ Create a new Notion page **under the provided parent page** using `mcp__notion__
 |------|------|
 (리서치 중 등장하는 도메인 용어를 여기에 정리)
 
+## 리서치 목적
+{사용자가 입력한 리서치 목적 그대로 기재}
+
 ## 레퍼런스 리스트
 | SaaS | {목적 기반 컬럼 1} | {목적 기반 컬럼 2} | {목적 기반 컬럼 3} | 적합도 | 주요 고객사 |
 |------|-------------------|-------------------|-------------------|--------|------------|
 (종합 단계에서 채워짐 — 컬럼은 리서치 목적에 맞게 synthesis 단계에서 확정)
-
-## 분석 대상 서비스
-- [ ] Service A
-- [ ] Service B
-... (체크박스 per 서비스)
 
 ## 공통 기능 패턴
 | 기능 패턴 | 카테고리 | 빈도 | 설명 | 주요 레퍼런스 |
@@ -79,7 +77,6 @@ For each confirmed service, invoke the `product-research-service` skill:
 > Use product-research-service skill with: "[service name]" and the Notion page ID
 
 Wait for each service analysis to complete before moving to the next.
-After each service completes, check off that service's checkbox in the Notion page.
 
 ### Step 4: Synthesize
 

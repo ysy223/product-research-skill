@@ -53,6 +53,13 @@ Parse `$ARGUMENTS` as: `{service_name} {notion_page_id}`
 ```markdown
 ## {Service Name}
 
+<toggle: 참조 URL>
+- {WebFetch한 URL 1}
+- {WebFetch한 URL 2}
+- {WebFetch한 URL 3}
+... (리서치에 실제로 사용한 모든 URL)
+</toggle>
+
 > {한 문장 포지셔닝: 무엇을, 누구를 위해, 어떤 차별점으로}
 
 ### Overview
