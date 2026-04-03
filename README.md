@@ -11,11 +11,18 @@ A Claude Code plugin for structured product benchmark research. Analyzes multipl
 
 ## Installation
 
-```
-/install-github-plugin ysy223/product-research-skill
+Clone the repo and copy the skills to your Claude skills directory:
+
+```bash
+git clone https://github.com/ysy223/product-research-skill.git
+cp -r product-research-skill/skills/product-research ~/.claude/skills/
+cp -r product-research-skill/skills/product-research-service ~/.claude/skills/
+cp -r product-research-skill/skills/product-research-synthesis ~/.claude/skills/
 ```
 
-> Requires Claude Code with Notion MCP configured.
+Restart Claude Code. The `/product-research` command will be available immediately.
+
+> Requires Claude Code with Notion MCP configured (`mcp__notion__*` or `mcp__claude_ai_Notion__*`).
 
 ## Usage
 
