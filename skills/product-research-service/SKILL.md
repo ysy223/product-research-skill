@@ -1,8 +1,6 @@
 ---
 name: product-research-service
 description: "Use when analyzing a single product/service as part of a product research benchmark — fetches official docs and website, structures findings per a standard template, and writes the section to an existing Notion research page. Called by the product-research skill for each service in the benchmark."
-argument-hint: "[service name] [notion-page-id]"
-allowed-tools: WebSearch, WebFetch, mcp__notion__*, mcp__claude_ai_Notion__*
 ---
 
 # Product Research — Single Service Analysis
@@ -11,46 +9,51 @@ allowed-tools: WebSearch, WebFetch, mcp__notion__*, mcp__claude_ai_Notion__*
 
 Deeply analyze one product/service and write the findings to the Notion benchmark page.
 
+**핵심 원칙:** WebFetch의 제1 목적은 **핵심 기능의 UI가 표현된 이미지 수집**이다. 텍스트 설명보다 이미지가 먼저다.
+
 ## Instructions
 
 Parse `$ARGUMENTS` as: `{service_name} {notion_page_id}`
 
-### Step 1: Research
+### Step 1: 이미지 중심 리서치
 
-1. `WebSearch` for "{service_name} features pricing documentation 2024 2025"
-2. `WebFetch` the official website homepage
-   - Collect all image URLs found on the page (screenshots, feature images, hero images)
-3. `WebFetch` the official docs / help center (if discoverable)
-   - Collect additional image URLs from docs pages
-4. `WebSearch` for "{service_name} changelog OR release notes OR what's new" — try to find an update log URL, then `WebFetch` it if found (skip if not found within 1 attempt)
-5. `WebSearch` for "{service_name} review G2 OR Capterra" — collect 3–5 user quotes
+**목표: 각 핵심 기능마다 UI 스크린샷 1장 이상 확보**
 
-### Step 1b: Visual Interpretation
+1. `WebSearch` for "{service_name} features screenshot UI 2024 2025"
+   - 이미지가 풍부한 페이지 URL 우선 수집 (공식 사이트, docs, 블로그, 소개 페이지)
 
-For each collected image URL (up to 6 images — prioritize feature screenshots over logos/icons):
-- `WebFetch` the image URL directly so Claude can view it
-- Visually interpret what the image shows: UI layout, key elements, interaction patterns, what feature it demonstrates
-- Note: which feature section this image belongs to
+2. `WebFetch` 공식 홈페이지
+   - 목적: 기능별 UI 스크린샷 이미지 URL 수집
+   - 히어로 이미지, 기능 소개 섹션 이미지 모두 수집
 
-Use these visual observations to enrich feature descriptions. Example:
-> "스크린샷에서 인터뷰 진행 중 실시간 전사 UI 확인. 좌측 질문 가이드 패널, 우측 실시간 트랜스크립트, 하단 AI 요약 바 구조"
+3. `WebFetch` 공식 문서 / help center (발견 가능한 경우)
+   - 목적: 기능별 상세 UI 이미지 추가 수집
 
-Focus on:
-- Core feature set (especially unique or AI-powered features)
-- UX and interaction patterns visible in screenshots
-- Pricing model and tiers
-- Target customer (enterprise / SMB / individual)
-- Integration ecosystem
-- Recent product updates or notable launches (from update log if found)
+4. `WebSearch` for "{service_name} changelog OR release notes OR what's new"
+   - 목적: 최근 업데이트된 기능의 UI 이미지 확보
+   - URL 발견 시 `WebFetch` → 새 기능 스크린샷 수집 (없으면 1회 시도 후 스킵)
 
-### Step 2: Structure Findings
+5. `WebSearch` for "{service_name} review G2 OR Capterra" — 사용자 인용 3–5개 수집
 
-Build the service section following this template:
+### Step 2: 이미지 fetch & 시각 해석
+
+수집한 이미지 URL 중 **기능 UI 스크린샷 우선 최대 8장** fetch:
+- 로고, 아이콘, 배너 제외 — 실제 제품 UI가 담긴 이미지만
+- 각 이미지를 `WebFetch`로 직접 열어 시각적으로 해석:
+  - 어떤 기능 화면인지
+  - UI 레이아웃 구조 (패널 배치, 주요 요소)
+  - 인터랙션 패턴이나 흐름
+- 각 이미지를 기능별로 분류 (어떤 기능 섹션에 쓸지 결정)
+
+### Step 3: 콘텐츠 구성
+
+아래 구조로 서비스 섹션을 작성한다.
+**각 기능은 `### 타이틀 → 이미지 → 설명` 순서로 구성한다.**
 
 ```markdown
 ## {Service Name}
 
-> {One-sentence positioning: what it does, for whom, key differentiator}
+> {한 문장 포지셔닝: 무엇을, 누구를 위해, 어떤 차별점으로}
 
 ### Overview
 - **카테고리**: {e.g. AI 인터뷰 자동화, 사용자 조사, 데이터 분석}
@@ -60,55 +63,61 @@ Build the service section following this template:
 
 ### 핵심 기능
 
-<toggle: {Feature 1 Name}>
-{Description — what it does, why it matters, how it works}
-{Visual interpretation if screenshot was found: UI 구조, 주요 요소, 인터랙션 패턴 등}
-[이미지: {image_url if found, otherwise omit}]
+<toggle: {기능 1 이름}>
+
+### {기능 1 이름}
+![이미지]({image_url})
+{이미지에서 확인된 UI 구조 및 기능 설명 — 레이아웃, 주요 요소, 인터랙션 패턴 포함}
+
 </toggle>
 
-<toggle: {Feature 2 Name}>
-...
+<toggle: {기능 2 이름}>
+
+### {기능 2 이름}
+![이미지]({image_url})
+{설명}
+
 </toggle>
 
-(3–6 features total)
+(3–6개 기능. 이미지를 확보하지 못한 기능은 텍스트 설명만 작성)
 
 ### UX 특징
-- {UX observation 1}
-- {UX observation 2}
-- {UX observation 3}
+- {UX 관찰 1}
+- {UX 관찰 2}
+- {UX 관찰 3}
 
 ### 사용자 리뷰 요약
 
 <toggle: G2 / Capterra 리뷰>
 **긍정적 피드백:**
-- "{quote or paraphrase}" — {source}
+- "{인용 또는 요약}" — {출처}
 
 **부정적 피드백 / 개선 요청:**
-- "{quote or paraphrase}" — {source}
+- "{인용 또는 요약}" — {출처}
 </toggle>
 
 ### 최근 업데이트
-> {Latest notable release or feature update, with approximate date — skip section if no update log was found}
+### {최근 업데이트된 기능 이름}
+![이미지]({image_url if found})
+{업데이트 내용 및 UI 설명 — 이미지 없으면 섹션 전체 생략}
 
 ### vs 경쟁사
-> {1–2 sentences: how this service is uniquely positioned vs others in the benchmark}
+> {이 서비스가 벤치마크 내 다른 서비스와 다른 핵심 포인트 1–2문장}
 ```
 
-### Step 3: Write to Notion
+### Step 4: Notion에 작성
 
-Use `mcp__notion__notion-update-page` (or `mcp__claude_ai_Notion__notion-update-page`) with `update_content` command to append the service section under `## 개별 툴 분석` in the Notion page (`notion_page_id`).
+`mcp__notion__notion-update-page` (또는 `mcp__claude_ai_Notion__notion-update-page`)의 `update_content` 명령으로 `## 개별 툴 분석` 하위에 서비스 섹션 추가.
 
-### Step 4: Report
+### Step 5: 완료 리포트
 
-Output: "✅ {Service Name} 분석 완료"
-
-Include a 2–3 bullet summary of the most notable findings for this service.
+"✅ {Service Name} 분석 완료" 출력 후 주요 발견 2–3줄 요약.
 
 ## Quality Standards
 
-- Always fetch the official website — do not rely on search snippets alone
-- Always attempt to fetch and visually interpret screenshots — text descriptions alone are insufficient
-- Include at least 3 core features with meaningful descriptions
-- User review section must have at least 1 positive and 1 critical point
-- Pricing must be specific (not just "contact sales") unless truly unavailable
-- The "vs 경쟁사" callout should reference at least one other service in the benchmark by name
+- **이미지 없이 기능 설명만 쓰는 것은 불충분** — 반드시 UI 스크린샷 확보 시도
+- 기능 구조는 항상 `### 타이틀 → 이미지 → 설명` 순서
+- 최소 3개 기능, 기능당 이미지 1장 목표
+- 사용자 리뷰는 긍정/부정 각 1개 이상
+- 가격은 구체적으로 (불가능한 경우에만 "문의")
+- "vs 경쟁사"는 벤치마크 내 다른 서비스 이름을 명시
