@@ -1,7 +1,7 @@
 ---
 name: product-research
 description: "Use when the user wants to research and benchmark multiple products/services on a topic. Creates a structured Notion page with per-service deep dives, common feature patterns with frequency rankings, and strategic implications. Invoke with a research topic (e.g. 'AI interview tools', 'note-taking apps')."
-argument-hint: "[research topic, e.g. 'AI interview tools']"
+argument-hint: "[research topic] [notion-parent-page-url]"
 allowed-tools: WebSearch, WebFetch, mcp__notion__*, mcp__claude_ai_Notion__*
 ---
 
@@ -17,16 +17,23 @@ You are a senior product researcher conducting a comprehensive benchmark study.
 
 ### Step 1: Clarify Scope
 
-If `$ARGUMENTS` is empty, ask:
+Parse `$ARGUMENTS` as: `{topic} {notion-parent-page-url}`
+
+If topic is missing, ask:
 > "어떤 주제로 리서치할까요? (예: AI 인터뷰 툴, 노트 앱, 설문 자동화 서비스)"
 
-Once topic is clear:
+If Notion parent page URL is missing, ask:
+> "리서치 페이지를 만들 노션 페이지 URL을 알려주세요."
+
+Extract the Notion page ID from the URL (the 32-char hex string in the path).
+
+Once topic and parent page are clear:
 1. Use `WebSearch` to identify 6–10 relevant products/services for the topic.
 2. Present the list to the user and confirm (add/remove services) before proceeding.
 
 ### Step 2: Create Notion Page
 
-Create a new Notion page with this structure using `mcp__notion__notion-create-pages` (or `mcp__claude_ai_Notion__notion-create-pages`):
+Create a new Notion page **under the provided parent page** using `mcp__notion__notion-create-pages` (or `mcp__claude_ai_Notion__notion-create-pages`), with `parent_id` set to the extracted page ID:
 
 ```
 📅 리서치 날짜: {TODAY}  |  🔢 버전: 1.0

@@ -12,7 +12,7 @@ A Claude Code plugin for structured product benchmark research. Analyzes multipl
 ## Installation
 
 ```
-/install-github-plugin sonya/product-research-skill
+/install-github-plugin ysy223/product-research-skill
 ```
 
 > Requires Claude Code with Notion MCP configured.
@@ -20,10 +20,12 @@ A Claude Code plugin for structured product benchmark research. Analyzes multipl
 ## Usage
 
 ```
-/product-research AI interview tools
-/product-research note-taking apps for developers
-/product-research B2B onboarding automation
+/product-research AI interview tools https://www.notion.so/your-page-id
+/product-research note-taking apps for developers https://www.notion.so/your-page-id
+/product-research B2B onboarding automation https://www.notion.so/your-page-id
 ```
+
+The Notion URL points to the **parent page** where the new research page will be created as a sub-page. If omitted, Claude will ask for it.
 
 ## Skills
 
