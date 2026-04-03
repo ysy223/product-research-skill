@@ -27,6 +27,23 @@ A Claude Code plugin for structured product benchmark research. Analyzes multipl
 
 The Notion URL points to the **parent page** where the new research page will be created as a sub-page. If omitted, Claude will ask for it.
 
+> [!WARNING]
+> **토큰 사용량 주의 — 서비스 수를 제한하세요**
+>
+> 서비스 1개 분석에 약 **5,000–10,000 토큰**이 소모됩니다 (WebFetch × 3–4회 + Notion 쓰기 포함).
+>
+> | 서비스 수 | 예상 토큰 | 권장 여부 |
+> |-----------|-----------|-----------|
+> | 3–5개 | ~30,000 | ✅ 빠르고 가벼움 |
+> | 6–8개 | ~60,000 | ✅ 균형 잡힌 리서치 |
+> | 9–10개 | ~100,000 | ⚠️ 긴 세션, 컨텍스트 압축 발생 가능 |
+> | 10개 초과 | ~120,000+ | ❌ 비추천 — 여러 세션으로 나눠서 진행 |
+>
+> **팁:** 서비스가 많으면 핵심 5–6개만 먼저 분석하고, 나중에 개별적으로 추가하세요:
+> ```
+> /product-research-service Notion https://www.notion.so/existing-research-page-id
+> ```
+
 ## Skills
 
 | Skill | Trigger | Description |

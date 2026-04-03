@@ -20,7 +20,8 @@ Parse `$ARGUMENTS` as: `{service_name} {notion_page_id}`
 1. `WebSearch` for "{service_name} features pricing documentation 2024 2025"
 2. `WebFetch` the official website homepage
 3. `WebFetch` the official docs / help center (if discoverable)
-4. `WebSearch` for "{service_name} review G2 OR Capterra" — collect 3–5 user quotes
+4. `WebSearch` for "{service_name} changelog OR release notes OR what's new" — try to find an update log URL, then `WebFetch` it if found (skip if not found within 1 attempt)
+5. `WebSearch` for "{service_name} review G2 OR Capterra" — collect 3–5 user quotes
 
 Focus on:
 - Core feature set (especially unique or AI-powered features)
@@ -28,7 +29,7 @@ Focus on:
 - Pricing model and tiers
 - Target customer (enterprise / SMB / individual)
 - Integration ecosystem
-- Recent product updates or notable launches
+- Recent product updates or notable launches (from update log if found)
 
 ### Step 2: Structure Findings
 
@@ -72,6 +73,9 @@ Build the service section following this template:
 **부정적 피드백 / 개선 요청:**
 - "{quote or paraphrase}" — {source}
 </toggle>
+
+### 최근 업데이트
+> {Latest notable release or feature update, with approximate date — skip section if no update log was found}
 
 ### vs 경쟁사
 > {1–2 sentences: how this service is uniquely positioned vs others in the benchmark}
